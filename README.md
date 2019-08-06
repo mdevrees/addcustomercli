@@ -43,3 +43,9 @@ Bumped version to 1.0.0, no new changes
 
 ## Version 1.0.1
 Set composer minimum stability to dev
+
+## Version 1.0.2
+Nothing specfici
+
+## Version 1.0.3
+Rename to AddCustomerCli
