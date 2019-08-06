@@ -1,4 +1,4 @@
-# Mdevrees Customercommand module
+# Mdevrees Customer CLI module
 This module adds a cli command to create a customer.
 
 ## Installation
