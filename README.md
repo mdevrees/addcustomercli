@@ -1,6 +1,9 @@
 # Mdevrees Customercommand module
 This module adds a cli command to create a customer.
 
+## Installation
+`composer require mdevrees/addcustomercommand`
+
 ## Usage
 ```bash
 php bin/magento customer:user:create --help
