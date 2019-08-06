@@ -1,0 +1,21 @@
+{
+  "name": "mdevrees/addcustomercommand",
+  "type": "magento2-module",
+  "version": "0.0.1",
+  "description": "Module which adds cli option to create customer",
+  "authors": [
+    {
+      "name": "Mycha de Vrees",
+      "email": "m.devrees@gmail.com"
+    }
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Mdevrees\\Addcustomercommand\\": ""
+    }
+  }
+}
+
