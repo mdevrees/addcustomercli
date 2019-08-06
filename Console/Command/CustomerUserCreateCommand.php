@@ -2,13 +2,13 @@
 /**
  * Author: Mycha de Vrees
  */
-namespace Mdevrees\Addcustomercommand\Console\Command;
+namespace Mdevrees\AddCustomerCli\Console\Command;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use Mdevrees\Addcustomercommand\Helper\Customer;
+use Mdevrees\AddCustomerCli\Helper\Customer;
 
 class CustomerUserCreateCommand extends Command
 {

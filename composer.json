@@ -1,5 +1,5 @@
 {
-  "name": "mdevrees/addcustomercommand",
+  "name": "mdevrees/addcustomercli",
   "type": "magento2-module",
   "version": "1.0.0",
   "description": "Module which adds cli option to create customer",
@@ -15,7 +15,7 @@
       "registration.php"
     ],
     "psr-4": {
-      "Mdevrees\\Addcustomercommand\\": ""
+      "Mdevrees\\AddCustomerCli\\": ""
     }
   }
 }

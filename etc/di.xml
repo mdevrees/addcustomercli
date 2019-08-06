@@ -3,7 +3,7 @@
     <type name="Magento\Framework\Console\CommandList">
         <arguments>
             <argument name="commands" xsi:type="array">
-                <item name="customer_user_create" xsi:type="object">Mdevrees\Addcustomercommand\Console\Command\CustomerUserCreateCommand</item>
+                <item name="customer_user_create" xsi:type="object">Mdevrees\AddCustomerCli\Console\Command\CustomerUserCreateCommand</item>
             </argument>
         </arguments>
     </type>

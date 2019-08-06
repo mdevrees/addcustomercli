@@ -2,7 +2,7 @@
 This module adds a cli command to create a customer.
 
 ## Installation
-`composer require mdevrees/addcustomercommand`
+`composer require mdevrees/addcustomercli`
 
 ## Usage
 ```bash

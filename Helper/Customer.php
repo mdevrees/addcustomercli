@@ -1,6 +1,6 @@
 <?php
 
-namespace Mdevrees\Addcustomercommand\Helper;
+namespace Mdevrees\AddCustomerCli\Helper;
 
 use Magento\Customer\Model\CustomerFactory;
 use Magento\Framework\App\Helper\Context;
