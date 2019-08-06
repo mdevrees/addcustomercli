@@ -9,6 +9,7 @@
       "email": "m.devrees@gmail.com"
     }
   ],
+  "minimum-stability": "dev",
   "autoload": {
     "files": [
       "registration.php"
