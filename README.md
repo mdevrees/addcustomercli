@@ -38,14 +38,14 @@ php bin/magento customer:user:create --customer-firstname="Mycha" --customer-las
 ### Version 0.0.1
 Initial module version, allows users to be added
 
-### Version 1.0.0
+#### Version 1.0.0
 Bumped version to 1.0.0, no new changes
 
-## Version 1.0.1
+#### Version 1.0.1
 Set composer minimum stability to dev
 
-## Version 1.0.2
+#### Version 1.0.2
 Nothing specfici
 
-## Version 1.0.3
+#### Version 1.0.3
 Rename to AddCustomerCli
