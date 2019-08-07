@@ -10,7 +10,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Mdevrees\AddCustomerCli\Helper\Customer;
 
-class CustomerPasswordCommand extends Command
+class CustomerUnlockCommand extends Command
 {
     protected $customerHelper;
 
