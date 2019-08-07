@@ -25,21 +25,17 @@ class Customer extends \Magento\Framework\App\Helper\AbstractHelper
     protected $customerFactory;
     protected $data;
     protected $customerId;
-    protected $customerRepository;
     protected $lockExpires;
 
     public function __construct(
         Context $context,
         StoreManagerInterface $storeManager,
         State $state,
-        CustomerFactory $customerFactory,
-        CustomerRepositoryInterfaceFactory $customerRepositoryFactory
-
+        CustomerFactory $customerFactory
     ) {
         $this->storeManager = $storeManager;
         $this->state = $state;
         $this->customerFactory = $customerFactory;
-        $this->customerRepository = $customerRepositoryFactory->create();
 
         parent::__construct($context);
     }
@@ -53,7 +49,6 @@ class Customer extends \Magento\Framework\App\Helper\AbstractHelper
     public function loadCustomerById($customerId)
     {
         return $this->customerFactory->create()->load($customerId);
-//        return $this->customerRepository->getById($customerId);
     }
 
     public function executeLock()
@@ -77,6 +72,15 @@ class Customer extends \Magento\Framework\App\Helper\AbstractHelper
         $customer->save();
         $this->lockExpires = $customer->getLockExpires();
         $this->customerId = $customer->getId();
+    }
+
+    public function executeChangePassword()
+    {
+        $customer = $this->loadCustomerById($this->data->getOption(self::KEY_ID));
+        if (!$customer)
+            return;
+        $customer->setPassword($this->data->getOption(self::KEY_PASSWORD));
+        $customer->save();
     }
 
     public function executeCreate()

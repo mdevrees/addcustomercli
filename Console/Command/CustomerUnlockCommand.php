@@ -10,7 +10,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Mdevrees\AddCustomerCli\Helper\Customer;
 
-class CustomerUserLockCommand extends Command
+class CustomerPasswordCommand extends Command
 {
     protected $customerHelper;
 
@@ -23,8 +23,8 @@ class CustomerUserLockCommand extends Command
     protected function configure()
     {
         $this
-            ->setName('customer:user:lock')
-            ->setDescription('Lock existing customer by setting a lock date')
+            ->setName('customer:unlock')
+            ->setDescription('Unlock existing customer')
             ->setDefinition($this->getOptionsList());
     }
 
@@ -32,7 +32,7 @@ class CustomerUserLockCommand extends Command
     {
         $output->writeln('<info>Locking user...</info>');
         $this->customerHelper->setData($input);
-        $this->customerHelper->executeLock();
+        $this->customerHelper->executeUnlock();
 
         $output->writeln('');
         $output->writeln('<info>User locked with the following data:</info>');
@@ -44,7 +44,6 @@ class CustomerUserLockCommand extends Command
     {
         return [
             new InputOption(Customer::KEY_ID, null, InputOption::VALUE_REQUIRED, '(Required) Customer ID'),
-            new InputOption(Customer::KEY_DATE, null, InputOption::VALUE_REQUIRED, '(Required) Date'),
         ];
     }
 }

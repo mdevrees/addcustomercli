@@ -10,7 +10,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Mdevrees\AddCustomerCli\Helper\Customer;
 
-class CustomerUserUnlockCommand extends Command
+class CustomerPasswordCommand extends Command
 {
     protected $customerHelper;
 
@@ -23,8 +23,8 @@ class CustomerUserUnlockCommand extends Command
     protected function configure()
     {
         $this
-            ->setName('customer:user:unlock')
-            ->setDescription('Unlock existing customer')
+            ->setName('customer:changepassword')
+            ->setDescription('Change password from existing customer')
             ->setDefinition($this->getOptionsList());
     }
 
@@ -32,18 +32,19 @@ class CustomerUserUnlockCommand extends Command
     {
         $output->writeln('<info>Locking user...</info>');
         $this->customerHelper->setData($input);
-        $this->customerHelper->executeUnlock();
+        $this->customerHelper->executeChangePassword();
 
         $output->writeln('');
         $output->writeln('<info>User locked with the following data:</info>');
         $output->writeln('<comment>Customer ID: ' . $this->customerHelper->getCustomerId());
-        $output->writeln('<comment>Lock expires: ' . $this->customerHelper->getLockExpires());
+        $output->writeln('<comment>Customer Password: ' . $input->getOption(Customer::KEY_PASSWORD));
     }
 
     protected function getOptionsList()
     {
         return [
             new InputOption(Customer::KEY_ID, null, InputOption::VALUE_REQUIRED, '(Required) Customer ID'),
+            new InputOption(Customer::KEY_PASSWORD, null, InputOption::VALUE_REQUIRED, '(Required) Customer password new'),
         ];
     }
 }

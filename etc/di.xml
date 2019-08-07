@@ -3,9 +3,10 @@
     <type name="Magento\Framework\Console\CommandList">
         <arguments>
             <argument name="commands" xsi:type="array">
-                <item name="customer_user_create" xsi:type="object">Mdevrees\AddCustomerCli\Console\Command\CustomerUserCreateCommand</item>
-                <item name="customer_user_lock" xsi:type="object">Mdevrees\AddCustomerCli\Console\Command\CustomerUserLockCommand</item>
-                <item name="customer_user_unlock" xsi:type="object">Mdevrees\AddCustomerCli\Console\Command\CustomerUserUnlockCommand</item>
+                <item name="customer_create" xsi:type="object">Mdevrees\AddCustomerCli\Console\Command\CustomerCreateCommand</item>
+                <item name="customer_lock" xsi:type="object">Mdevrees\AddCustomerCli\Console\Command\CustomerLockCommand</item>
+                <item name="customer_unlock" xsi:type="object">Mdevrees\AddCustomerCli\Console\Command\CustomerUnlockCommand</item>
+                <item name="customer_changepassword" xsi:type="object">Mdevrees\AddCustomerCli\Console\Command\CustomerPasswordCommand</item>
             </argument>
         </arguments>
     </type>

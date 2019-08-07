@@ -10,7 +10,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Mdevrees\AddCustomerCli\Helper\Customer;
 
-class CustomerUserCreateCommand extends Command
+class CustomerCreateCommand extends Command
 {
     protected $customerHelper;
 
@@ -23,7 +23,7 @@ class CustomerUserCreateCommand extends Command
     protected function configure()
     {
         $this
-            ->setName('customer:user:create')
+            ->setName('customer:create')
             ->setDescription('Create new customer')
             ->setDefinition($this->getOptionsList());
     }
