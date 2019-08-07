@@ -32,7 +32,7 @@ class CustomerUserCreateCommand extends Command
     {
         $output->writeln('<info>Creating new user...</info>');
         $this->customerHelper->setData($input);
-        $this->customerHelper->execute();
+        $this->customerHelper->executeCreate();
 
         $output->writeln('');
         $output->writeln('<info>User created with the following data:</info>');

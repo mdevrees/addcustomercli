@@ -4,6 +4,8 @@
         <arguments>
             <argument name="commands" xsi:type="array">
                 <item name="customer_user_create" xsi:type="object">Mdevrees\AddCustomerCli\Console\Command\CustomerUserCreateCommand</item>
+                <item name="customer_user_lock" xsi:type="object">Mdevrees\AddCustomerCli\Console\Command\CustomerUserLockCommand</item>
+                <item name="customer_user_lock" xsi:type="object">Mdevrees\AddCustomerCli\Console\Command\CustomerUserUnlockCommand</item>
             </argument>
         </arguments>
     </type>

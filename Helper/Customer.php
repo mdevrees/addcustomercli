@@ -3,6 +3,7 @@
 namespace Mdevrees\AddCustomerCli\Helper;
 
 use Magento\Customer\Model\CustomerFactory;
+use Magento\Customer\Api\CustomerRepositoryInterfaceFactory;
 use Magento\Framework\App\Helper\Context;
 use Magento\Framework\App\State;
 use Magento\Store\Model\StoreManagerInterface;
@@ -16,22 +17,29 @@ class Customer extends \Magento\Framework\App\Helper\AbstractHelper
     const KEY_PASSWORD = 'customer-password';
     const KEY_WEBSITE = 'website';
     const KEY_SENDEMAIL = 'send-email';
+    const KEY_ID = 'customer-id';
+    const KEY_DATE = 'date';
 
     protected $storeManager;
     protected $state;
     protected $customerFactory;
     protected $data;
     protected $customerId;
+    protected $customerRepository;
+    protected $lockExpires;
 
     public function __construct(
         Context $context,
         StoreManagerInterface $storeManager,
         State $state,
-        CustomerFactory $customerFactory
+        CustomerFactory $customerFactory,
+        CustomerRepositoryInterfaceFactory $customerRepositoryFactory
+
     ) {
         $this->storeManager = $storeManager;
         $this->state = $state;
         $this->customerFactory = $customerFactory;
+        $this->customerRepository = $customerRepositoryFactory->create();
 
         parent::__construct($context);
     }
@@ -42,7 +50,36 @@ class Customer extends \Magento\Framework\App\Helper\AbstractHelper
         return $this;
     }
 
-    public function execute()
+    public function loadCustomerById($customerId)
+    {
+        return $this->customerFactory->create()->load($customerId);
+//        return $this->customerRepository->getById($customerId);
+    }
+
+    public function executeLock()
+    {
+
+        $customer = $this->loadCustomerById($this->data->getOption(self::KEY_ID));
+        if (!$customer)
+            return;
+        $customer->setLockExpires($this->data->getOption(self::KEY_DATE));
+        $customer->save();
+        $this->lockExpires = $customer->getLockExpires();
+        $this->customerId = $customer->getId();
+    }
+
+    public function executeUnlock()
+    {
+        $customer = $this->loadCustomerById($this->data->getOption(self::KEY_ID));
+        if (!$customer)
+            return;
+        $customer->setLockExpires(null);
+        $customer->save();
+        $this->lockExpires = $customer->getLockExpires();
+        $this->customerId = $customer->getId();
+    }
+
+    public function executeCreate()
     {
         $this->state->setAreaCode('frontend');
 
@@ -65,5 +102,10 @@ class Customer extends \Magento\Framework\App\Helper\AbstractHelper
     public function getCustomerId()
     {
         return (int)$this->customerId;
+    }
+
+    public function getLockExpires()
+    {
+        return $this->lockExpires;
     }
 }
